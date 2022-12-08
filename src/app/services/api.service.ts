@@ -25,4 +25,16 @@ export class ApiService {
   getMoviesList(): Observable<Movie[]> {
     return this.http.get<Movie[]>(this.apiURL)
   }
+
+  dummyLogin() {
+    localStorage.setItem('isAuthenticated', 'true');
+  }
+
+  dummyLogout() {
+    localStorage.removeItem('isAuthenticated');
+  }
+
+  checkAuth() {
+    return localStorage.getItem('isAuthenticated') ? true : false;
+  }
 }
