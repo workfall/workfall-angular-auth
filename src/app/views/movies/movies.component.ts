@@ -17,6 +17,7 @@ export type Album = {
 export class MoviesComponent implements OnInit {
   config: CarouselConfig<Movie> = {
     items: [],
+    slideWidth: 35
   };
 
   @ViewChild(CarouselComponent)
