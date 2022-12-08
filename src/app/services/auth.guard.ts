@@ -25,10 +25,8 @@ export class AuthGuard
     CanDeactivate<unknown>,
     CanLoad,
     CanMatch {
-  isAuthenticated: boolean;
 
   constructor(private apiService: ApiService, private router: Router) {
-    this.isAuthenticated = apiService.checkAuth();
   }
 
   canActivate(
@@ -81,9 +79,10 @@ export class AuthGuard
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (!this.isAuthenticated) {
+    const isAuthenticated = this.apiService.checkAuth();
+    if (!isAuthenticated) {
       this.router.navigate(['/']);
     }
-    return this.isAuthenticated;
+    return isAuthenticated;
   }
 }
