@@ -3,6 +3,7 @@ import { trigger, transition, useAnimation } from '@angular/animations';
 import { slideInDown } from 'ng-animate';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private apiService: ApiService
   ) {}
 
   ngOnInit(): void {
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
+    this.apiService.dummyLogin()
     this.router.navigate(['/home'])
   }
 }

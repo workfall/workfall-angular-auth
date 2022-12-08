@@ -11,6 +11,11 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./views/movies/movies.module').then(m => m.MoviesModule),
     canLoad: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./views/profile/profile.module').then(m => m.ProfileModule),
+    canLoad: [AuthGuard]
   }
 ];
 
