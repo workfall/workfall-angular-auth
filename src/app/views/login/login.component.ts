@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { slideInDown } from 'ng-animate';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,21 @@ import { Router } from '@angular/router';
     trigger('slideInDown', [transition('* => *', useAnimation(slideInDown))])
   ],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   slideInDown: any;
+  loginForm!: FormGroup;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {}
+
+  ngOnInit(): void {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    })
+  }
 
   handleLogin() {
     this.router.navigate(['/home'])
