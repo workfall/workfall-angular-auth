@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { slideInDown } from 'ng-animate';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,4 +13,12 @@ import { slideInDown } from 'ng-animate';
 })
 export class LoginComponent {
   slideInDown: any;
+
+  constructor(
+    private router: Router
+  ) {}
+
+  handleLogin() {
+    this.router.navigate(['/home'])
+  }
 }

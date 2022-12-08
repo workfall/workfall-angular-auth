@@ -1,1 +1,8 @@
-<p>movie-card works!</p>
+<div class="card" style="width: 18rem;">
+  <img [src]="movieInfo?.thumbnail" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{movieInfo?.title}}</h5>
+    <!-- <p class="card-text">{{movieInfo?.}}</p> -->
+    <a (click)="handleViewImage()" class="btn btn-primary">View Image</a>
+  </div>
+</div>
